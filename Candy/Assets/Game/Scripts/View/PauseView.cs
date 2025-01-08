@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
 public class PauseView : MonoBehaviour
 {
     [SerializeField] private GameObject _panelPause;
-    [Header("Buttons")]
+    [Header("Buttons Pause")]
     [SerializeField] private Button _homeButton;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _closeButton;

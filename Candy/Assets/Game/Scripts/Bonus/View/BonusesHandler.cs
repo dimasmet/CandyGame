@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -71,7 +69,6 @@ public class BonusesHandler : MonoBehaviour
 
     public void ActiveBonus(int number, NameBonus bonus, Sprite crystalSprite = null)
     {
-        Debug.Log("1 ---- ButtonBonus.globalActive " + ButtonBonus.globalActive);
         if (activeBonus == false)
         {
             curNumBonus = number;
@@ -79,7 +76,6 @@ public class BonusesHandler : MonoBehaviour
             switch (bonus)
             {
                 case NameBonus.BonusNewField:
-                    Debug.Log("New Field");
                     BoardManager.instance.RespawnField(false);
                     ButtonBonus.globalActive = true;
                     Invoke(nameof(ActionCompleted), 0.5f);
@@ -98,8 +94,6 @@ public class BonusesHandler : MonoBehaviour
 
             activeBonus = true;
         }
-
-        Debug.Log("2 ---- ButtonBonus.globalActive " + ButtonBonus.globalActive);
     }
 
     public void ActionCompleted()
@@ -115,7 +109,5 @@ public class BonusesHandler : MonoBehaviour
         ButtonBonus.globalActive = false;
 
         SaveData();
-
-        Debug.Log("3 ---- ButtonBonus.globalActive " + ButtonBonus.globalActive);
     }
 }

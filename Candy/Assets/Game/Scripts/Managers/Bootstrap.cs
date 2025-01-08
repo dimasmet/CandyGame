@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -81,8 +79,8 @@ public class Bootstrap : MonoBehaviour
         {
             numLvl = 0;
         }
-        Bootstrap.OnChoiceLevel?.Invoke(numLvl);
-        Bootstrap.OnStartGame?.Invoke();
+        OnChoiceLevel?.Invoke(numLvl);
+        OnStartGame?.Invoke();
     }
 
     private void WinLevel()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +10,6 @@ public class GameView : ScreenPanel
     {
         _pauseButton.onClick.AddListener(() =>
         {
-            //Bootstrap.OnStopGame?.Invoke();
-            //ScreensViewHandler.UI.OpenPanel(ScreensViewHandler.NamePanel.Levels);
-
             pauseView.ShowPause();
         });
     }

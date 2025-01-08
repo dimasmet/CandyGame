@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +24,6 @@ public class ButtonBonus : MonoBehaviour
     {
         _thisButton.onClick.AddListener(() =>
         {
-            Debug.Log(globalActive);
             if (globalActive == false)
             {
                 globalActive = true;
@@ -37,7 +34,6 @@ public class ButtonBonus : MonoBehaviour
                 else
                 {
                     _handler.ActiveBonus(number, _bonusData.nameBonus);
-                    Debug.Log("_bonusData.nameBonus " + _bonusData.nameBonus);
                 }
             }
         });

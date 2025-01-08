@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour
 {
@@ -19,8 +18,6 @@ public class Tile : MonoBehaviour
 			return render;
         }
     }
-
-	private bool isSelected = false;
 
 	private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
 
@@ -64,15 +61,6 @@ public class Tile : MonoBehaviour
     {
 		currentType = typeTile;
 		render.sprite = sprite;
-
-		if (sprite == null)
-		{
-			GetComponent<SpriteRenderer>().enabled = false;
-		}
-		else
-		{
-			GetComponent<SpriteRenderer>().enabled = true;
-		}
 	}
 
 	public void PlayAnimations(TypeAnimation typeAnimation)
@@ -99,13 +87,11 @@ public class Tile : MonoBehaviour
     }
 
 	public void Select() {
-		isSelected = true;
 		render.color = selectedColor;
 		previousSelected = this;
 	}
 
 	public void Deselect() {
-		isSelected = false;
 		render.color = Color.white;
 		previousSelected = null;
 	}
