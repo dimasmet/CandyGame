@@ -11,9 +11,16 @@ public class Settings : ScreenPanel
     [SerializeField] private Button _openBtn;
     [SerializeField] private Button _closeBtn;
 
+    [SerializeField] private Button _tutorialBtn;
+
     private void Awake()
     {
         Application.targetFrameRate = 90;
+
+        _tutorialBtn.onClick.AddListener(() =>
+        {
+            GameRulesControl.I.ShowRules(true);
+        });
 
         _openBtn.onClick.AddListener(() =>
         {
