@@ -132,6 +132,8 @@ public class Tile : MonoBehaviour
 		Sprite tempSprite = render2.sprite;
 		render2.sprite = render.sprite;
 		render.sprite = tempSprite;
+
+		Tile.GlobalActive = true;
 	}
 
 	public void SwapSprite(SpriteRenderer render2, float time = 0)

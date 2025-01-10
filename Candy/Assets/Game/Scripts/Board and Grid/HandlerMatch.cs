@@ -51,43 +51,57 @@ public class HandlerMatch : MonoBehaviour
                 {
                     _secondChoiceTile = tile;
 
-                    if (_secondChoiceTile.GetAllAdjacentTiles().Contains(_firstChoiceTile))
+                    if (_secondChoiceTile.Render.sprite == _firstChoiceTile.Render.sprite)
                     {
-                        _secondChoiceTile.SwapSprite(_firstChoiceTile.Render);
-
                         _firstChoiceTile.Deselect();
                         _secondChoiceTile.Deselect();
-
-                        bool isSuccFirst = _firstChoiceTile.ClearAllMatches();
-                        bool isSuccSecond = _secondChoiceTile.ClearAllMatches();
-
-                        if (isSuccFirst == false && isSuccSecond == false)
-                        {
-                            _secondChoiceTile.PlayAnimations(Tile.TypeAnimation.False);
-                            _firstChoiceTile.PlayAnimations(Tile.TypeAnimation.False);
-                            _firstChoiceTile.SwapSprite(_secondChoiceTile.Render, 0.5f);
-
-                            SoundsHandler.sound.PlayShotSound(SoundsHandler.NameSoundGame.False);
-                        }
-                        else
-                        {
-                            SoundsHandler.sound.PlayShotSound(SoundsHandler.NameSoundGame.Success);
-                        }
 
                         _firstChoiceTile = null;
                         _secondChoiceTile = null;
-
-                        //StartCoroutine(BoardManager.instance.WaitToClearAllMatchesOnScene());
                     }
                     else
                     {
-                        _firstChoiceTile.Deselect();
-                        _secondChoiceTile.Deselect();
 
-                        _firstChoiceTile = _secondChoiceTile;
-                        _firstChoiceTile.Select();
+                        if (_secondChoiceTile.GetAllAdjacentTiles().Contains(_firstChoiceTile))
+                        {
+                            Tile.GlobalActive = false;
 
-                        _secondChoiceTile = null;
+                            _secondChoiceTile.SwapSprite(_firstChoiceTile.Render);
+
+                            _firstChoiceTile.Deselect();
+                            _secondChoiceTile.Deselect();
+
+                            bool isSuccFirst = _firstChoiceTile.ClearAllMatches();
+                            bool isSuccSecond = _secondChoiceTile.ClearAllMatches();
+
+                            if (isSuccFirst == false && isSuccSecond == false)
+                            {
+                                _secondChoiceTile.PlayAnimations(Tile.TypeAnimation.False);
+                                _firstChoiceTile.PlayAnimations(Tile.TypeAnimation.False);
+                                _firstChoiceTile.SwapSprite(_secondChoiceTile.Render, 0.5f);
+
+                                SoundsHandler.sound.PlayShotSound(SoundsHandler.NameSoundGame.False);
+                            }
+                            else
+                            {
+                                SoundsHandler.sound.PlayShotSound(SoundsHandler.NameSoundGame.Success);
+                            }
+
+                            _firstChoiceTile = null;
+                            _secondChoiceTile = null;
+
+                            //StartCoroutine(BoardManager.instance.WaitToClearAllMatchesOnScene());
+                        }
+                        else
+                        {
+                            _firstChoiceTile.Deselect();
+                            _secondChoiceTile.Deselect();
+
+                            _firstChoiceTile = _secondChoiceTile;
+                            _firstChoiceTile.Select();
+
+                            _secondChoiceTile = null;
+                        }
                     }
                 }
             }

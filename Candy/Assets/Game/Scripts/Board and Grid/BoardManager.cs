@@ -192,6 +192,7 @@ public class BoardManager : MonoBehaviour {
 			{
 				if (tiles[x, y].Render.sprite == null && currentMatrix[x,y] != 0)
 				{
+					Tile.GlobalActive = false;
 					yield return StartCoroutine(ShiftTilesDown(x, y));
 					break;
 				}
@@ -210,6 +211,8 @@ public class BoardManager : MonoBehaviour {
 					tiles[x, y].ClearAllMatches();
 			}
 		}
+
+		Tile.GlobalActive = true;
 	}
 
 	private IEnumerator ShiftTilesDown(int x, int yStart, float shiftDelay = .03f)
